@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--
+        springIOC 容器是一个高级容器 内部会有缓存动作 先创建对象
+        在进行属性复制
+        应用和被引用的组件 必须全部都在ioc容器
+      1 将他们都存放在ioc容器中
+-->
+    <bean id="userDao" class="com.itqicat.ioc_02.UserDao" />
+<!--    1. 单个构造参数注入-->
+    <bean id="userService" class="com.itqicat.ioc_02.UserService" >
+<!--        构造参数传值 di的配置
+            constructor-arg 构造参数传值的di配置
+            value = 直接属性 String name = "4r4r"
+            ref = 引用其他bean-->
+        <constructor-arg  ref="userDao" />
+    </bean>
+    <!--        2 多个构造参数注入-->
+    <bean id="userService1" class="com.itqicat.ioc_02.UserService" >
+<!--        构造参数的顺序填写值-->
+        <constructor-arg value="1"/>
+        <constructor-arg value="1"/>
+        <constructor-arg ref="userDao"/>
+    </bean>
+    <bean id="userService2" class="com.itqicat.ioc_02.UserService" >
+        <!--        构造参数的名字填写值-->
+        <constructor-arg name="name" value="铁蛋"/>
+        <constructor-arg name="age" value="19"/>
+        <constructor-arg name="userDao" ref="userDao"/>
+    </bean>
+<!--    出发setter 方法进行注入-->
+    <bean id="mov" class="com.itqicat.ioc_02.MovieFinder"/>
+    <bean id="simpleMovieLister" class="com.itqicat.ioc_02.SimpleMovieLister">
+<!--        name -> 属性名 其实是调用set方法的名
+            value | ref 二选一
+-->
+        <property name="movieFinder" ref="mov" />
+        <property name="movieName" value="ss"/>
+    </bean>
+
+</beans>

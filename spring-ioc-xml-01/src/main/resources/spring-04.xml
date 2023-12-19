@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--    init-method = "初始化方法名称"
+        destroy-method = "销毁方法名"
+        spring ioc容器就会在对应时间节点，调用对应的方法，沃恩可以在其中写对应的业务就可以
+-->
+    <bean id="javabean" class="com.itqicat.ioc_04.javaBean"
+          init-method="init" destroy-method="clear"
+    />
+<!--    ===============Spring 05 xml ========================-->
+<!--    id = getObject返回的对象的标识
+             工厂bean的表示 是 &id值
+        Class factoryBean 标准化工厂类
+-->
+    <bean id="javaFactoryBean" class="com.itqicat.ioc_05.javaBeanFactoryBean">
+<!--        此位置的属性：是给javaBean共产类配置的 而不是getObject方法-->
+        <property name="name" value="二狗子"/>
+    </bean>
+
+</beans>

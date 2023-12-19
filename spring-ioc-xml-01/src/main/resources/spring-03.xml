@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--   IOC的配置一定是实现类！ 真正要进项实例化！-->
+<!--声明了组件信息 ioc的配置->被applicationContext读取了 -> 才会实例化对象   -->
+    <bean id="HappyCompoent" class="com.itqicat.ioc_03.HappyCompoent" />
+</beans>
