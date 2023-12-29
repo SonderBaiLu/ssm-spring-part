@@ -12,6 +12,7 @@
         <module name="spring-ioc-annotationn-practice-05" />
         <module name="spring-ioc-xml-practice-02" />
         <module name="spring-ioc-annotation-03" />
+        <module name="Spring-tx-12" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
