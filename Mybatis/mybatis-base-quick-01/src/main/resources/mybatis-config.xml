@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 通过properties标签，读取java配置文件的内容 -->
+    <properties resource="jdbc.properties" />
+    <!-- 配置mybatis的环境信息 -->
+    <!--environments表示配置Mybatis的开发环境，可以配置多个环境，在众多具体环境中 使用default属性指定实际运行时使用的环境  -->
+    <environments default="development">
+        <!--environment 表示配置Mybatis的具体环境-->
+        <environment id="development">
+            <!-- 配置JDBC事务控制，由mybatis进行管理 -->
+            <transactionManager type="JDBC"/>
+            <!-- 配置数据源，采用dbcp连接池 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${at_driver}" />
+                <property name="url" value="${at_url}" />
+                <property name="username" value="${at_username}" />
+                <property name="password" value="${at_password}" />
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <!--Mapper注册： 指定Mybatis映射文件具体位置-->
+        <!--mapper标签：配置一个具体的Mapper映射文件-->
+        <!--resource属性：指定Mapper映射文件的实际储存位置，这里需要使用一个以类路径根目录为基础的相对路径-->
+        <!--对Maven工程的目录结构来说 resource目录下的内容会直接放入类路径所以这里我们可以 以resource目录为基准-->
+        <mapper resource="Mappers/EmployeeMappers.xml"/>
+    </mappers>
+</configuration>

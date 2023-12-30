@@ -6,12 +6,14 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
+import java.io.FileNotFoundException;
+
 @SpringJUnitConfig(SpringConfig.class)
 public class SpringTxt {
     @Autowired
     public StudentService studentService;
     @Test
-    public void text1(){
+    public void text1() throws FileNotFoundException {
         studentService.UpdateNameById();
     }
 }
